@@ -1,0 +1,133 @@
+import { useState } from "react"; 
+import { motion } from "framer-motion"; 
+import { Input } from "@/components/ui/input"; 
+import { Button } from "@/components/ui/button"; 
+import { Card, CardContent } from "@/components/ui/card"; 
+ 
+export default function SoboliLacrossePage() { 
+  const [formData, setFormData] = useState({ 
+    name: "", 
+    age: "", 
+    contact: "", 
+    experience: "" 
+  }); 
+ 
+  const handleChange = (e) => { 
+    setFormData({ ...formData, [e.target.name]: e.target.value }); 
+  }; 
+ 
+  const handleSubmit = (e) => { 
+    e.preventDefault(); 
+    alert("Заявка отправлена! Мы свяжемся с вами."); 
+  }; 
+ 
+  return ( 
+    <div className="min-h-screen bg-[#FCE5CC] text-[#1D4A58] font-sans"> 
+      <motion.header 
+        className="text-center py-10" 
+        initial={{ opacity: 0, y: -50 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 0.8 }} 
+      > 
+        <h1 className="text-5xl font-bold">Команда по лакроссу «Соболи» – 
+Новосибирск</h1> 
+        <p className="text-lg mt-2">Новички. Тренируемся самостоятельно.</p> 
+      </motion.header> 
+ 
+      <motion.section 
+        className="bg-[#1D4A58] text-[#FCE5CC] p-6 md:p-10 mb-10" 
+        initial={{ opacity: 0 }} 
+        whileInView={{ opacity: 1 }} 
+        transition={{ duration: 1 }} 
+        viewport={{ once: true }} 
+      > 
+        <h2 className="text-3xl font-semibold mb-4">О нас</h2> 
+        <p className="mb-4"> 
+          Команда «Соболи» появилась недавно. Мы тренируемся в Новосибирске 
+самостоятельно. Пока не участвовали в соревнованиях, но стремимся развиваться и 
+популяризировать лакросс в регионе. 
+        </p> 
+        <p className="italic">Цель — участие в турнирах и создание сильного локального 
+сообщества игроков.</p> 
+      </motion.section> 
+ 
+      <motion.section 
+        className="p-6 md:p-10 mb-10" 
+        initial={{ opacity: 0 }} 
+        whileInView={{ opacity: 1 }} 
+        transition={{ duration: 1 }} 
+        viewport={{ once: true }} 
+      > 
+        <h2 className="text-3xl font-semibold mb-4">Что такое лакросс?</h2> 
+        <p className="mb-2"> 
+          Лакросс — это командный вид спорта, в котором игроки используют клюшки с 
+сеткой (кроссы), чтобы ловить, передавать и забрасывать мяч в ворота соперника. 
+Игра сочетает элементы хоккея, футбола и баскетбола. 
+        </p> 
+        <p> 
+          История лакросса уходит корнями в культуру североамериканских индейцев, где 
+игра выполняла как спортивные, так и ритуальные функции. 
+        </p> 
+      </motion.section> 
+ 
+      <motion.section 
+        className="bg-[#1D4A58] text-[#FCE5CC] p-6 md:p-10 mb-10" 
+        initial={{ opacity: 0 }} 
+        whileInView={{ opacity: 1 }} 
+        transition={{ duration: 1 }} 
+        viewport={{ once: true }} 
+      > 
+        <h2 className="text-3xl font-semibold mb-4">Тренировки</h2> 
+        <p>Мы тренируемся в Новосибирске в парках и на спортивных площадках по 
+выходным.</p> 
+        <p>Точное расписание можно узнать, связавшись с нами через форму ниже или 
+по контактам.</p> 
+        <p className="mt-2 italic">Можно присоединиться в любое время, вне 
+зависимости от уровня подготовки.</p> 
+      </motion.section> 
+ 
+      <motion.section 
+        className="p-6 md:p-10 mb-10" 
+        initial={{ opacity: 0 }} 
+        whileInView={{ opacity: 1 }} 
+        transition={{ duration: 1 }} 
+        viewport={{ once: true }} 
+      > 
+        <Card className="bg-[#FCE5CC] border-[#1D4A58]"> 
+          <CardContent className="p-6"> 
+            <h3 className="text-2xl font-bold mb-4">Присоединиться к нам</h3> 
+            <form onSubmit={handleSubmit} className="grid gap-4"> 
+              <Input name="name" placeholder="ФИО" value={formData.name} 
+onChange={handleChange} required /> 
+              <Input name="age" type="number" placeholder="Возраст" value={formData.age} 
+onChange={handleChange} required /> 
+              <Input name="contact" placeholder="Контакт (телефон, мессенджер)" 
+value={formData.contact} onChange={handleChange} required /> 
+              <Input name="experience" placeholder="Есть ли опыт в спорте?" 
+value={formData.experience} onChange={handleChange} required /> 
+              <Button type="submit" className="bg-[#1D4A58] text-[#FCE5CC] 
+hover:bg-[#163c47]">Отправить</Button> 
+            </form> 
+            <p className="mt-4 text-sm"> 
+              Экипировка: удобная спортивная одежда. Клюшки на первое время 
+предоставим. 
+            </p> 
+          </CardContent> 
+        </Card> 
+      </motion.section> 
+ 
+      <motion.section 
+        className="bg-[#1D4A58] text-[#FCE5CC] p-6 md:p-10 text-center" 
+        initial={{ opacity: 0 }} 
+        whileInView={{ opacity: 1 }} 
+        transition={{ duration: 1 }} 
+        viewport={{ once: true }} 
+      > 
+        <h2 className="text-2xl font-semibold mb-2">Контакты</h2> 
+        <p>Email: soboli.lacrosse@mail.ru</p> 
+        <p>Telegram: @sables_lacrosse_NSK</p> 
+        <p className="mt-2">Тренировки проходят в Новосибирскe</p> 
+      </motion.section> 
+    </div> 
+  ); 
+} 
